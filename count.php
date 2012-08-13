@@ -39,7 +39,7 @@ if (intval($_POST['count'])) {
 }
 
 # we have $count and $activity_type, log it!
-$event = "activity=".$activity_type.", count=".$count;
+$event = "activity=".$activity_type.", amount=".$count;
 $datetime = utcnow();
 $timestamped_event = $datetime." ".$event."\n";
 if (log_to_file(ACTIVITIES_LOG_FILE, $timestamped_event)) {
