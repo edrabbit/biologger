@@ -15,7 +15,7 @@ include_once('fxns.php');
 
 <body>
 <div id="topbar">
-	<div id="leftnav"><a href="index.php?secret=EdUsesThis" />Back</a></div>
+	<div id="leftnav"><a href="index.php" />Home</a></div>
 </div>
 
 <?
