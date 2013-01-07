@@ -1,3 +1,9 @@
+<?php
+
+include_once('fxns.php');
+$one_touches = load_activities(ONE_TOUCHES_FILE);
+?>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 
@@ -21,6 +27,17 @@
 			<a href="activity.php"><div><span class="name">Activity</span><span class="arrow"></span></div></a>
 		</li>
 	</ul>
+
+    <span class="graytitle">One Touch Activities</span>
+    <ul class="pageitem">
+            <?php
+                foreach ($one_touches as $act) {
+                    print '<li class="menu">';
+                    print '<a href="count.php?activity='.$act.'"><div><span class="name">'.$act.'</span></div></a>';
+                    print '</li>';
+                }
+            ?>
+    </ul>
 </div>
 
 </body>

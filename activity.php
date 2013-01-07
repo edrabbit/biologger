@@ -22,7 +22,7 @@ $activities = load_activities(ACTIVITIES_FILE);
 		<span class="graytitle">Activity</span>
 		<ul class="pageitem">
 			<li class="select">
-				<select name="activity_type">
+				<select name="activity">
 					<?php
 					$selected = False;
 					foreach ($activities as $act) {
