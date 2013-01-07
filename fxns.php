@@ -6,12 +6,15 @@ function utcnow() {
     return date("c");
 }
 
-function load_activities($filename) {
+function load_activities($filename, $sort=True) {
 // Load valid activities from a text file
 	$f = file($filename);
 	
 	foreach ($f as $x){
 		$activities[] = trim($x);
+	}
+	if ($sort) {
+	    sort($activities);
 	}
 	return $activities;
 }
@@ -22,6 +25,15 @@ function log_to_file($filename, $event) {
 	fwrite($f, $event);
 	fclose($f);
 	return True;
+}
+
+function is_one_touch($activity) {
+    $one_touches = load_activities(ONE_TOUCHES_FILE);
+    if (in_array($activity, $one_touches)) {
+        return True;
+    } else {
+        return False;
+    }
 }
 
 ?>
