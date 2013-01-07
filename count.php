@@ -21,25 +21,32 @@ include_once('fxns.php');
 <?
 #Open a file and pull in all the options
 $activities = load_activities(ACTIVITIES_FILE);
+$onetouches = load_activities(ONE_TOUCHES_FILE);
 
-# make sure activity is in list
-if (in_array($_POST["activity_type"], $activities)) {
-	$activity_type = $_POST['activity_type'];
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $activity = $_POST["activity"];
 } else {
+    $activity = $_GET["activity"];
+}
+
+# make sure activity is in lists of valid activities
+if (!(in_array($activity, $activities)) && !(in_array($activity, $onetouches)) ) {
 	print "Invalid activity";
 	die();
 }
 
-# make sure count is an intval
-if (intval($_POST['count'])) {
-	$count = intval($_POST['count']);
+if (is_one_touch($activity)) {
+    $event = "activity=".$activity;
 } else {
-	print "Invalid count<br />";
-	die();
+    # make sure count is an intval
+    if (intval($_POST['count'])) {
+    	$count = intval($_POST['count']);
+    } else {
+    	print "Invalid count<br />";
+    	die();
+    }
+    $event = "activity=".$activity.", amount=".$count;
 }
-
-# we have $count and $activity_type, log it!
-$event = "activity=".$activity_type.", amount=".$count;
 $datetime = utcnow();
 $timestamped_event = $datetime." ".$event."\n";
 if (log_to_file(ACTIVITIES_LOG_FILE, $timestamped_event)) {
