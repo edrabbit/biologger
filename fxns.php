@@ -1,5 +1,6 @@
 <?php
 include_once("settings.php");
+error_reporting(E_ERROR);
 
 function utcnow() {
 // Datetimes should always be logged in UTC and sorted out at displaytime
@@ -9,12 +10,12 @@ function utcnow() {
 function load_activities($filename, $sort=True) {
 // Load valid activities from a text file
 	$f = file($filename);
-	
+	$activites = array();
 	foreach ($f as $x){
 		$activities[] = trim($x);
 	}
 	if ($sort) {
-	    sort($activities);
+	    @sort($activities);
 	}
 	return $activities;
 }
