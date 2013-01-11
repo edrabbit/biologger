@@ -45,7 +45,7 @@ if (is_one_touch($activity)) {
     	print "Invalid count<br />";
     	die();
     }
-    $event = "activity=".$activity.", amount=".$count;
+    $event = "activity='".$activity."', amount=".$count;
 }
 $datetime = utcnow();
 $timestamped_event = $datetime." ".$event."\n";
