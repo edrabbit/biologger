@@ -36,7 +36,7 @@ if (!(in_array($activity, $activities)) && !(in_array($activity, $onetouches)) )
 }
 
 if (is_one_touch($activity)) {
-    $event = "activity=".$activity;
+    $event = 'activity="'.$activity.'"';
 } else {
     # make sure count is an intval
     if (intval($_POST['count'])) {
@@ -45,7 +45,7 @@ if (is_one_touch($activity)) {
     	print "Invalid count<br />";
     	die();
     }
-    $event = "activity='".$activity."', amount=".$count;
+    $event = 'activity="'.$activity.'", amount='.$count;
 }
 $datetime = utcnow();
 $timestamped_event = $datetime." ".$event."\n";
