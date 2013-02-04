@@ -23,9 +23,13 @@ function load_activities($filename, $sort=True) {
 function log_to_file($filename, $event) {
 // Log $event to $filename
 	$f = fopen($filename, "a+");
-	fwrite($f, $event);
-	fclose($f);
-	return True;
+	if (fwrite($f, $event)) {
+            fclose($f);
+            return True;
+        } else {
+	    fclose($f);
+	    return False;
+        }
 }
 
 function is_one_touch($activity) {
