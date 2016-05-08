@@ -1,4 +1,4 @@
-<?
+<?php
 // valid_activities.bio is a file with the string for each valid activity on it's own line
 define(ACTIVITIES_FILE, "/path/to/valid_activities.bio");
 

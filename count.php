@@ -18,7 +18,7 @@ include_once('fxns.php');
 	<div id="leftnav"><a href="index.php" />Home</a></div>
 </div>
 
-<?
+<?php
 #Open a file and pull in all the options
 $activities = load_activities(ACTIVITIES_FILE);
 $onetouches = load_activities(ONE_TOUCHES_FILE);
@@ -53,7 +53,7 @@ if (log_to_file(ACTIVITIES_LOG_FILE, $timestamped_event)) {
 	?>
 	<br /><br /><br /><br />
 	<div align="center">LOGGED!</div>
-	<?
+	<?php
 		print $timestamped_event;
 } else {
 	print "FAILED TO LOG!";
