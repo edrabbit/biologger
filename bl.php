@@ -1,5 +1,4 @@
 <?php
-// Define log file path
 require 'settings.php';
 header('X-FRAME-OPTIONS: DENY');
 
@@ -14,12 +13,14 @@ function log_activity($activity) {
     file_put_contents(LOG_FILE, $logEntry, FILE_APPEND);
 }
 
+// Function to log note to file
 function log_note($note) {
     $datetime = (new DateTime())->format(DateTime::ATOM);
     $logEntry = "{$datetime}, action=\"note\", note=\"{$note}\"\n";
     file_put_contents(LOG_FILE, $logEntry, FILE_APPEND);
 }
 
+// Check to make sure the activity is something valid, i.e. in activities file
 function valid_activity($value, $activities_file = ACTIVITIES_FILE) {
     $activities = file($activities_file, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
     return in_array($value, $activities);
@@ -53,7 +54,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <head>
     <meta charset="UTF-8">
     <title>Biologger</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Add viewport meta tag -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <link rel="stylesheet" href="styles.css">
@@ -68,7 +69,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         <div class="message"><?= $message ?></div>
     <?php } ?>
 <?php
-// Check if the file exists and is readable
 if (file_exists(ACTIVITIES_FILE) && is_readable(ACTIVITIES_FILE)) {
     // Read the file into an array, one line per array element
     $activities = file(ACTIVITIES_FILE, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
@@ -82,7 +82,6 @@ if (file_exists(ACTIVITIES_FILE) && is_readable(ACTIVITIES_FILE)) {
             echo '<input type="submit" name="activity" value="' . htmlspecialchars($activity) . '" class="button">';
         }
     }
-
     echo '</form>';
 ?>
 <div class="form-container">
@@ -96,14 +95,12 @@ if (file_exists(ACTIVITIES_FILE) && is_readable(ACTIVITIES_FILE)) {
 }
 ?>
 
-<!-- "Show Log" Button -->
 <div id="show-log-button">
     <button id="show-log-btn">Show Log</button>
     <button id="home"><a href="<?= $_SERVER['PHP_SELF'].'?p='.PASSWORD ?>" class="biologger-link">Home</a></button>
 </div>
 
 <div class="log">
-<!-- Container for Logs -->
 <div id="log-container" style="display: none;"></div>
 
     <script>
@@ -125,7 +122,6 @@ if (file_exists(ACTIVITIES_FILE) && is_readable(ACTIVITIES_FILE)) {
             .catch(error => console.error('Error fetching logs:', error));
     });
     </script>
-
 </div>
 </div>
 </body>
