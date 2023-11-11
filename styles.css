@@ -1,0 +1,119 @@
+body {
+    background-color: #333;
+    color: #fff;
+    font-family: Arial, sans-serif;
+}
+
+.container {
+    text-align: center;
+    padding-top: 10px;
+}
+
+.biologger-link a {
+    color: #ffffff; /* Set the text color to white */
+    background-color: #4CAF50; /* Use the green color for the background */
+    text-decoration: none; /* Remove underline from the link */
+    padding: 10px 20px; /* Add some padding */
+    border-radius: 5px; /* Round the corners */
+    display: inline-block; /* Allows padding and margin */
+    margin-top: 20px; /* Add some space above the link */
+    font-size: 24px; /* Increase the font size */
+    font-weight: bold; /* Make the text bold */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2); /* Add a subtle shadow for depth */
+}
+
+.button {
+    background-color: #4CAF50;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: block;
+    margin: 10px auto; /* centers the button and adds 10px margin to the top and bottom */
+    cursor: pointer;
+    width: auto;
+    min-width: 200px; /* Corrected typo from 'min-wdith' to 'min-width' */
+    font-size: 18px;
+}
+
+.separator {
+    height: 4px; /* Make the separator thicker */
+    background-color: #eee; /* You can change color if needed */
+    margin: 20px auto; /* Add 'auto' to horizontally center the separator */
+    width: 60%; /* Adjust width to your preference */
+}
+
+.text-box {
+    padding: 10px;
+    font-size: 16px;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    float: left;
+    margin-right: 10px;
+}
+
+.submit-button {
+    background-color: #4CAF50;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    display: block;
+    cursor: pointer;
+    margin-left: 10px;
+}
+
+.submit-button:hover {
+    background-color: #45a049;
+}
+
+.form-container {
+    display: flex; /* Use flexbox */
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically if needed */
+}
+
+#show-log-btn {
+    margin-top: 20px;
+}
+
+.log {
+    text-align: left;
+    width: 100%;
+    font-size: 12px;
+}
+
+/* Clearfix to ensure the container contains the floated elements */
+form::after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.button:hover, .button:active {
+    background-color: #45a049;
+}
+
+.log {
+    margin-top: 30px;
+}
+
+.message {
+    color: #4CAF50;
+}
+
+@media screen and (max-width: 480px) {
+    .button {
+        width: 90%; /* Full width buttons on small screens */
+        padding: 20px; /* Larger padding for better touch area */
+        font-size: 20px; /* Larger text for better readability */
+    }
+    .log {
+        font-size: 12px;
+    }
+}
